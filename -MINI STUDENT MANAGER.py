@@ -1,26 +1,64 @@
+import time
+
+print("MINI STUDENT MANAGER".center(100,"-"))
+
 students = {}
 choice = ""
+
 while True:
     choice = input("""
     1. Add Student
-    2. View Students
-    3. Search Student
-    4. Exit
-    """)
+    2. Update Student
+    3. Delete Student
+    4. Search Student
+    5. View Students 
+    6. Exit 
+    """).strip()
     if choice == "1":
-        stud_id = int(input("Enter student id:"))
-        stud_name = input("Enter student name:")
-        students[stud_id] = stud_name
+        print("Your choice: Adding Student")
+        stud_id = input("Enter student id:")
+        if stud_id in students:
+            print("Student already exists!")
+        else:
+            stud_name = input("Enter student name:")
+            students[stud_id] = stud_name
+            print("Student added successfully!")
     elif choice == "2":
-        for id in students:
-            print(f"{id} : {students[id]}")
+        print("Your choice: Updating Student")
+        stud_id = input("Enter student id to update:")
+        if stud_id in students:
+            stud_name = input("Enter updated student name:")
+            students[stud_id] = stud_name
+            print("Student updated successfully!")
+        else:
+            print("Not found")
     elif choice == "3":
+        print("Your choice: Deleting Student")
+        stud_id = input("Enter student id to delete:")
+        if stud_id in students:
+            students.pop(stud_id)
+            print("Student deleted successfully!")
+        else:
+            print("Not found")
+    elif choice == "4":
+        print("Your choice: Searching Student")
         stud_id = input("Enter student id to search:")
         if stud_id in students:
             print(students[stud_id])
         else:
             print("Not found")
-    elif choice == "4":
+    elif choice == "5":
+        print("Your choice: Viewing Students")
+        if not students:
+            print("No students available")
+        else:
+            print(f"Total students: {len(students)}")
+            for stud_id, stud_name in students.items():
+                print(f"{stud_id} : {stud_name}")
+    elif choice == "6":
+        print("Exiting...")
         break
     else:
         print("Invalid choice!")
+    print("*"*40)
+    time.sleep(2)
