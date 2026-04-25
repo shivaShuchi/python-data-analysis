@@ -1,8 +1,13 @@
 import time
+import json
 
 print("MINI STUDENT MANAGER".center(100,"-"))
 
-students = {}
+try:
+    with open("students.json","r") as f:
+        students = json.load(f)
+except:
+    students = {}
 choice = ""
 
 while True:
@@ -22,6 +27,8 @@ while True:
         else:
             stud_name = input("Enter student name:")
             students[stud_id] = stud_name
+            with open("students.json","w") as f:
+                json.dump(students, f)
             print("Student added successfully!")
     elif choice == "2":
         print("Your choice: Updating Student")
@@ -29,6 +36,8 @@ while True:
         if stud_id in students:
             stud_name = input("Enter updated student name:")
             students[stud_id] = stud_name
+            with open("students.json","w") as f:
+                json.dump(students, f)
             print("Student updated successfully!")
         else:
             print("Not found")
@@ -37,6 +46,8 @@ while True:
         stud_id = input("Enter student id to delete:")
         if stud_id in students:
             students.pop(stud_id)
+            with open("students.json","w") as f:
+                json.dump(students, f)
             print("Student deleted successfully!")
         else:
             print("Not found")
