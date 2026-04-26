@@ -1,6 +1,21 @@
 import time
 import json
 
+username = "sati"
+password = "4321"
+
+for i in range(3):
+    user = input("Enter user name:")
+    passwd = input("Enter password:")
+    if user == username and passwd == password:
+        print("Login successful!")
+        break
+    else:
+        print("Invalid username or password!")
+else:
+    print("Too many attempts, exiting...")
+    exit()
+
 print("MINI STUDENT MANAGER".center(100,"-"))
 
 try:
