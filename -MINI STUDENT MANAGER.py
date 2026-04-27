@@ -25,6 +25,10 @@ except:
     students = {}
 choice = ""
 
+def save_data():
+    with open("students.json", "w") as f:
+        json.dump(students, f)
+
 while True:
     choice = input("""
     1. Add Student
@@ -42,8 +46,7 @@ while True:
         else:
             stud_name = input("Enter student name:")
             students[stud_id] = stud_name
-            with open("students.json","w") as f:
-                json.dump(students, f)
+            save_data()
             print("Student added successfully!")
     elif choice == "2":
         print("Your choice: Updating Student")
@@ -51,8 +54,7 @@ while True:
         if stud_id in students:
             stud_name = input("Enter updated student name:")
             students[stud_id] = stud_name
-            with open("students.json","w") as f:
-                json.dump(students, f)
+            save_data()
             print("Student updated successfully!")
         else:
             print("Not found")
@@ -61,8 +63,7 @@ while True:
         stud_id = input("Enter student id to delete:")
         if stud_id in students:
             students.pop(stud_id)
-            with open("students.json","w") as f:
-                json.dump(students, f)
+            save_data()
             print("Student deleted successfully!")
         else:
             print("Not found")
