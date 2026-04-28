@@ -6,7 +6,7 @@ accounts = {}
 def create_account():
     number = int(random.randint(1000000000, 9999999999))
     if number not in accounts:
-        account_no = no
+        account_no = number
     account_balance = 0
     print("Fill your details")
     name = input("Account Holder Name:")
