@@ -4,9 +4,9 @@ print("BANK ACCOUNT SYSTEM".center(100,"-"))
 accounts = {}
 
 def create_account():
-    number = int(random.randint(1000000000, 9999999999))
-    if number not in accounts:
-        account_no = number
+    num = int(random.randint(1000000000, 9999999999))
+    if num not in accounts:
+        account_no = num
     account_balance = 0
     print("Fill your details")
     name = input("Account Holder Name:")
