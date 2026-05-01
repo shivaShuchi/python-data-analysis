@@ -69,4 +69,4 @@ while True:
         print("Exiting...")
         break
     else:
-        print("Invalid choice!")
+        print("Invalid choice! make a valid choice")
